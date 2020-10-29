@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 
-node('main') {
+node {
     stage('Step:1'){
       def buildUUID = UUID.randomUUID().toString()
       currentBuild.result = 'INPROGRESS'
