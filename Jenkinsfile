@@ -4,7 +4,6 @@
 	
 node {
     try {
-	checkout scm
         // do something that fails
         sh "exit 1"
         
