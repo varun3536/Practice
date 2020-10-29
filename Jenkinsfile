@@ -1,7 +1,5 @@
 #!/usr/bin/env groovy
 
-
-#!/usr/bin/groovy
 node{
     
 def call(body) {
