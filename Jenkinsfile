@@ -2,9 +2,8 @@
 
 
 node {
-    stage('Step:1'){
-      currentBuild.result = 'INPROGRESS'
-       echo "RESULT: ${currentBuild.result}"
+    stage('Build'){
+   echo "During Build currentResult: ${currentBuild.currentResult}"
     try {
         // do something that doesn't fail
         echo "Im not going to fail"
