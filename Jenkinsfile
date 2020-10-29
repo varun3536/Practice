@@ -1,17 +1,10 @@
 #!/usr/bin/env groovy
 
-properties([
-  parameters([
-    separator(name: "BUILD_OPTIONS", sectionHeader: "Build Options"),
-    choice(choices: ['Nand', 'both', 'Flashless'],
-           description: 'Select the variant to build',
-           name: 'Build_Variant')
-    ])
- ])
-def buildUUID = UUID.randomUUID().toString()
-    currentBuild.result = 'INPROGRESS'
+
 node('main') {
     stage('Step:1'){
+      def buildUUID = UUID.randomUUID().toString()
+      currentBuild.result = 'INPROGRESS'
     try {
         // do something that doesn't fail
         echo "Im not going to fail"
