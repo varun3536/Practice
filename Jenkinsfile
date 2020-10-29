@@ -6,6 +6,8 @@ properties([
     choice(choices: ['Nand', 'both', 'Flashless'],
            description: 'Select the variant to build',
            name: 'Build_Variant')
+    ])
+ ])
 def buildUUID = UUID.randomUUID().toString()
     currentBuild.result = 'INPROGRESS'
 node('main') {
