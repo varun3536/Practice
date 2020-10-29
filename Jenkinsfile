@@ -11,3 +11,14 @@ node {
     }
     echo "RESULT: ${currentBuild.result}"
 }
+try {
+    notify(start)
+    //put here all your pipeline
+    notify(success)
+} catch(exception) {
+    notify(failure)
+}
+
+def notify(state) {
+    //notify scm
+}
