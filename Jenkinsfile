@@ -1,6 +1,14 @@
 #!/usr/bin/env groovy
 
-node {
+properties([
+  parameters([
+    separator(name: "BUILD_OPTIONS", sectionHeader: "Build Options"),
+    choice(choices: ['Nand', 'both', 'Flashless'],
+           description: 'Select the variant to build',
+           name: 'Build_Variant')
+def buildUUID = UUID.randomUUID().toString() 
+node('main') {
+    stage('Step:1'){
     try {
         // do something that doesn't fail
         echo "Im not going to fail"
@@ -14,4 +22,5 @@ node {
         println "post -1 on gerrit"
     }
     echo "RESULT: ${currentBuild.result}"
+    }
 }
