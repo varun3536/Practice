@@ -1,17 +1,15 @@
 #!/usr/bin/env groovy
 
-node{
+
+	
+node {
+    try {
 	checkout scm
-	stage('Build'){
-		try{
-		echo "hello world"
-		
-	}catch(e){
-		println"error $e"
-		currentBuild.getNumber())
-		currentBuild.result
-	}
-	stage('Deploy') {
-		if (currentBuild.result == null || currentBuild.result == 'SUCCESS') 
-	}
+        // do something that fails
+        sh "exit 1"
+        
+    } catch (Exception err) {
+        currentBuild.result = 'FAILURE'
+    }
+    echo "RESULT: ${currentBuild.result}"
 }
