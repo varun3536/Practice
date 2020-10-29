@@ -3,8 +3,8 @@
 
 node {
     stage('Step:1'){
-      def buildUUID = UUID.randomUUID().toString()
       currentBuild.result = 'INPROGRESS'
+       echo "RESULT: ${currentBuild.result}"
     try {
         // do something that doesn't fail
         echo "Im not going to fail"
