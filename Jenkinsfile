@@ -4,7 +4,7 @@ node {
     try {
         // do something that doesn't fail
         echo "Im not going to fail"
-        currentBuild.result = 'SUCCESS'
+        currentBuild.result = 'ABORTED'
     } catch (Exception err) {
         currentBuild.result = 'FAILURE'
     }
