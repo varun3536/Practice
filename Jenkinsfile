@@ -1,18 +1,17 @@
 #!/usr/bin/env groovy
 
-node{
-    
-def call(body) {
+node {
     try {
-        notify(start)
-        body()
-    	notify(success)
-    } catch(exception) {
-        notify(failure)
+        // do something that doesn't fail
+        echo "Im not going to fail"
+        currentBuild.result = 'SUCCESS'
+    } catch (Exception err) {
+        currentBuild.result = 'FAILURE'
     }
-}
-
-def notify(state) {
-    //notify scm
-}
+    if(currentBuild.result == null || currentBuild.result=='SUCCESS'){
+        println "Post +1 on gerrit"
+    }else{
+        println "post -1 on gerrit"
+    }
+    echo "RESULT: ${currentBuild.result}"
 }
