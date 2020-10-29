@@ -6,13 +6,14 @@ properties([
     choice(choices: ['Nand', 'both', 'Flashless'],
            description: 'Select the variant to build',
            name: 'Build_Variant')
-def buildUUID = UUID.randomUUID().toString() 
+def buildUUID = UUID.randomUUID().toString()
+    currentBuild.result = 'INPROGRESS'
 node('main') {
     stage('Step:1'){
     try {
         // do something that doesn't fail
         echo "Im not going to fail"
-        currentBuild.result = 'ABORTED'
+        currentBuild.result = 'SUCCESS'
     } catch (Exception err) {
         currentBuild.result = 'FAILURE'
     }
