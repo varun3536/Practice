@@ -12,7 +12,7 @@ node {
   }
   catch (exc) {
   echo 'Something failed, I should sound the klaxons!'
-  throw new Exception("Something went wrong!")
+  throw Exception("Something went wrong!")
   }
   }
 }
