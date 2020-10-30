@@ -3,6 +3,8 @@
 node {
   stage('Example') {
   try {
+  def buildUUID = UUID.randomUUID().toString()
+  
   sh 'exit 0'
   docker.image('node:7-alpine').inside {
      stage('Test') {
@@ -15,4 +17,5 @@ node {
   error "Program failed, please read logs..."
   } 
   }
+  println "{$buildUUID}"
 }
