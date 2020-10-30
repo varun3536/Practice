@@ -11,10 +11,10 @@ node {
         
         
         echo "Im not going to fail"
-        sh 'make || true'
         docker.image('node:7-alpine').inside {
      stage('Test') {
             sh 'node --version'
+            docker ps
             }
         }
         echo "During Build currentResult: ${currentBuild.currentResult}"
