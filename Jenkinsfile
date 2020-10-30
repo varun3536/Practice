@@ -8,7 +8,7 @@ node {
         // do something that doesn't fail
         buildId = buildId.replace("_", "-")
         buildId = buildId.replace("/", "-")
-        println "Will use a buildId of: ${buildId}.
+        println "Will use a buildId of: ${buildId}."
         echo "Im not going to fail"
         sh 'make || true'
         docker.image('node:7-alpine').inside {
