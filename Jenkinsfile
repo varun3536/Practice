@@ -14,7 +14,7 @@ node {
   }
   catch (exc) {
   echo 'Something failed, I should sound the klaxons!'
-  error "Program failed, please read logs..."
+  
   } 
   }
   println "{$buildUUID}"
