@@ -1,33 +1,13 @@
 #!/usr/bin/env groovy
 
-def buildUUID = UUID.randomUUID().toString()
-println "{$buildUUID}"
 node {
-   stage('Build'){
-   echo "During Build currentResult: ${currentBuild.currentResult}"
-    try {
-        // do something that doesn't fail
-        
-        println "Will use a buildId of: ${buildUUId}"
-        echo "Im not going to fail"
-        sh 'make || true'
-        docker.image('node:7-alpine').inside {
-     stage('Test') {
-            sh 'node --version'
-            }
-        }
-        echo "During Build currentResult: ${currentBuild.currentResult}"
-    } catch (Exception err) {
-        currentBuild.result = 'FAILURE'
-        throw
-    }
-    if(currentBuild.result == null || currentBuild.result=='SUCCESS'){
-        println "Post +1 on gerrit"
-    }else{
-        println "post -1 on gerrit"
-        deleteDir() 
-    }
-        
-    echo "RESULT: ${currentBuild.result}"
-    }
+  stage('Example') {
+  try {
+  sh 'exit 1'
+  }
+  catch (exc) {
+  echo 'Something failed, I should sound the klaxons!'
+  throw
+  }
+  }
 }
