@@ -21,7 +21,7 @@ node {
     } catch (err) {
         currentBuild.result = 'FAILURE'
         echo "Failed: ${err}"
-        Throw new Exception "$err"
+       Throw new Exception "${err}"
     }
     if(currentBuild.result == null || currentBuild.result=='SUCCESS'){
         println "Post +1 on gerrit"
