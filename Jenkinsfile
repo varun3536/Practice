@@ -27,7 +27,7 @@ node {
         println "Post +1 on gerrit"
     }else{
         println "post -1 on gerrit"
-        deleteDir() 
+        
     }
         
     echo "RESULT: ${currentBuild.result}"
