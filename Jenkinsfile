@@ -3,7 +3,7 @@
 node {
   stage('Example') {
   try {
-  sh 'make'
+  sh 'exit 0'
   }
   catch (exc) {
   echo 'Something failed, I should sound the klaxons!'
