@@ -9,7 +9,7 @@ node {
     try {
         // do something that doesn't fail
         
-        println "Will use a buildId of: {$buildUUId}"
+        
         echo "Im not going to fail"
         sh 'make || true'
         docker.image('node:7-alpine').inside {
