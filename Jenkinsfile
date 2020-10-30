@@ -18,9 +18,10 @@ node {
             }
         }
         echo "During Build currentResult: ${currentBuild.currentResult}"
-    } catch (Exception err) {
+    } catch (err) {
         currentBuild.result = 'FAILURE'
-        Throw new Exception "$Exception err"
+        echo "Failed: ${err}"
+        Throw new Exception "$err"
     }
     if(currentBuild.result == null || currentBuild.result=='SUCCESS'){
         println "Post +1 on gerrit"
