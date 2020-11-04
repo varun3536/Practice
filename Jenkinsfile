@@ -18,15 +18,13 @@ node {
             
             sh 'node --version'
             docker ps
-           
-            }
-     }
-     }   
+       
     } catch (err) {
         echo "During Build currentResult: ${currentBuild.currentResult}"
         echo "Failed: ${err}"
         throw err
        
+    }
     }
     if(currentBuild.result == null || currentBuild.result=='SUCCESS'){
         println "Post +1 on gerrit"
