@@ -6,21 +6,26 @@ println "{$buildUUID}"
 node {
    stage('Build'){
    echo "During Build currentResult: ${currentBuild.currentResult}"
-    try {
+    
         // do something that doesn't fail
-        
-        
         echo "Im not going to fail"
-        docker.image('node:7-alpine').inside {
+    }
+        
      stage('Test') {
+        try{
+            sh "mkdir test && cd test"
+            sh "docker ps -a"
+            
             sh 'node --version'
             docker ps
+           
             }
-        }
-        echo "During Build currentResult: ${currentBuild.currentResult}"
+     }
+     }   
     } catch (err) {
-        currentBuild.result = 'FAILURE'
+        echo "During Build currentResult: ${currentBuild.currentResult}"
         echo "Failed: ${err}"
+        throw err
        
     }
     if(currentBuild.result == null || currentBuild.result=='SUCCESS'){
