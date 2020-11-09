@@ -26,7 +26,7 @@ node {
        
     }
     }
-    if(t="Pass"){
+    if(t=="Pass"){
         println "Post +1 on gerrit"
     }else{
         println "post -1 on gerrit"
