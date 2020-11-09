@@ -26,12 +26,13 @@ node {
        
     }
     }
-    if(currentBuild.result=='SUCCESS'){
+    cr=${currentBuild.currentResult}
+    if(cr =='SUCCESS'){
         println "Post +1 on gerrit"
     }else{
         println "post -1 on gerrit"
         
     }
         
-    echo "RESULT: ${currentBuild.result}"
+   echo "RESULT: ${cr}"
     }
