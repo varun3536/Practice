@@ -20,18 +20,12 @@ node {
               echo "${currentBuild.currentResult}"
            }
     } catch (err) {
-        echo "During Failure: ${currentBuild.currentResult}"
+        
         echo "Failed: ${err}"
+        echo "Failed Error": ${currentBuild.currentResult}"
         throw err
        
     }
-    }
-    if(t=="Pass"){
-        println "Post +1 on gerrit"
-    }else{
-        println "post -1 on gerrit"
-        
-    }
-        
-   echo "RESULT: ${currentBuild.currentResult}"
+    }      
+   echo "During Failure: ${currentBuild.currentResult}"
     }
