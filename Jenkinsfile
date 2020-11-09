@@ -13,8 +13,12 @@ node {
         
      stage('Test') {
         try{
-         sh ...
-       
+           step[(
+              t=echo "Pass"
+              )]
+           if(t=="Pass"){
+              echo "${currentBuild.currentResult}"
+           }
     } catch (err) {
         echo "During Failure: ${currentBuild.currentResult}"
         echo "Failed: ${err}"
@@ -22,13 +26,12 @@ node {
        
     }
     }
-    cr="${currentBuild.currentResult}"
-    if(cr =='SUCCESS'){
+    if(t="Pass"){
         println "Post +1 on gerrit"
     }else{
         println "post -1 on gerrit"
         
     }
         
-   echo "RESULT: ${cr}"
+   echo "RESULT: ${currentBuild.currentResult}"
     }
