@@ -20,13 +20,13 @@ node {
             docker ps
        
     } catch (err) {
-        echo "During Build currentResult: ${currentBuild.currentResult}"
+        echo "During Failure: ${currentBuild.currentResult}"
         echo "Failed: ${err}"
         throw err
        
     }
     }
-    if(currentBuild.result == null || currentBuild.result=='SUCCESS'){
+    if(currentBuild.result=='SUCCESS'){
         println "Post +1 on gerrit"
     }else{
         println "post -1 on gerrit"
