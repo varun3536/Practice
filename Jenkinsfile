@@ -13,11 +13,7 @@ node {
         
      stage('Test') {
         try{
-            sh "mkdir test && cd test"
-            sh "docker ps -a"
-            
-            sh 'node --version'
-            docker ps
+         sh ...
        
     } catch (err) {
         echo "During Failure: ${currentBuild.currentResult}"
@@ -26,7 +22,7 @@ node {
        
     }
     }
-    cr=${currentBuild.currentResult}
+    cr="${currentBuild.currentResult}"
     if(cr =='SUCCESS'){
         println "Post +1 on gerrit"
     }else{
