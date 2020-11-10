@@ -33,8 +33,8 @@ node {
             }   
        
 }  
-   stage("Publiush"){
-      if($currentBuild.currentResult=="SUCCESS") {
+   stage("Publiush"{
+         if("${currentBuild.currentResult}"=="SUCCESS") {
   echo "last build success"
 }
    }
