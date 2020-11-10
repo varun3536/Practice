@@ -17,14 +17,15 @@ node {
              println "Try"
               sleep(2)
              def threshold = 100
-              if(threshold==100){
+              if(threshold==90){
+               print
              echo "${currentBuild.currentResult}"
                }
        }
      
     } catch (e) {
        println "catch"
-       currentBuild.result="SUCCESS"
+       echo "${currentBuild.currentResult}"
        throw(e)
     } finally {
       println "Finally"
