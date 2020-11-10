@@ -34,7 +34,6 @@ node {
     } finally {
     }
 }
-       
-    }     
+           
    echo "During Failure: ${currentBuild.currentResult}"
-    }
+}
