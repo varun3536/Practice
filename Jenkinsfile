@@ -35,7 +35,10 @@ node {
 }  
    stage("Publiush"{
          if("${currentBuild.currentResult}"=="SUCCESS") {
-  echo "last build success"
-}
+         echo "last build success"
+         println "+1 on gerrit"
+         }else{
+            println "-1 on gerrit"
+         }
    }
 }
