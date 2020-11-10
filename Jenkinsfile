@@ -32,5 +32,5 @@ node {
      
     }
 }  
-   echo "${currentBuild.currentResult}"
+   echo " ----->${currentBuild.currentResult}"
 }
