@@ -18,7 +18,7 @@ node {
               sleep(2)
              def threshold = 100
               if(threshold==100){
-               print
+         
              echo "${currentBuild.currentResult}"
                }
        }
@@ -29,8 +29,13 @@ node {
        throw(e)
     } finally {
       println "Finally"
-     echo getPassThreshold()
-    }
+     
+            }   
+       
 }  
-  
+   stage("Publiush"){
+      if(!hudson.model.Result.SUCCESS.equals(currentBuild.rawBuild.getcurrentResult()?.getResult())) {
+  echo "last build failed"
+}
+   }
 }
