@@ -17,7 +17,7 @@ node {
              println "Try"
               sleep(2)
              def threshold = 100
-              if(threshold==90){
+              if(threshold==100){
                print
              echo "${currentBuild.currentResult}"
                }
