@@ -41,4 +41,3 @@ node {
             println "-1 on gerrit"
          }
    }
-
