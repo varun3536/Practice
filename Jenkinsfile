@@ -30,7 +30,7 @@ node {
     } finally {
                
       println "Finally"
-         if("${currentBuild.currentResult}"=="SUCCESS") {
+         if("${currentBuild.currentResult}"=="FAILED") {
          echo "last build success"
          println "+1 on gerrit"
          }else{
