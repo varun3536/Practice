@@ -34,7 +34,7 @@ node {
        
 }  
    stage("Publiush"){
-      if(!hudson.model.Result.SUCCESS.equals(currentBuild.rawBuild.getcurrentResult()?.getResult())) {
+      if(!hudson.model.Result.SUCCESS.equals(currentBuild.getcurrentResult()?.getResult())) {
   echo "last build failed"
 }
    }
