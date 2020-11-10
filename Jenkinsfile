@@ -12,12 +12,14 @@ node {
         
      stage('Test') {
             try {
+            echo "${currentBuild.currentResult}"
             stage('Test myapp') {
-               println "Try"
-            sleep(2)
-            print
-            currentBuild.result="SUCCESS"
-  
+             println "Try"
+              sleep(2)
+             def threshold = 100
+              if(threshold==100){
+             echo "${currentBuild.currentResult}"
+               }
        }
      
     } catch (e) {
