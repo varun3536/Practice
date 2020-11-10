@@ -29,8 +29,10 @@ node {
        throw(e)
     } finally {
       println "Finally"
+      protected hudson.model.Result getBuildResult(hudson.model.Run<?,?> build,
+                                             RobotResult result)
      
     }
 }  
-   echo " ----->${currentBuild.currentResult}"
+  
 }
