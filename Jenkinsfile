@@ -5,7 +5,6 @@ println "{$buildUUID}"
 
 node {
    stage('Build'){
-   echo "During Build currentResult: ${currentBuild.currentResult}"
     
         // do something that doesn't fail
         echo "Im not going to fail"
@@ -14,26 +13,19 @@ node {
      stage('Test') {
             try {
             stage('Test myapp') {
-            echo "R ${currentBuild.result} C ${currentBuild.currentResult}"
-            step([
-            $class : 'RobotPublisher',
-            outputPath : 'myapp/output/',
-            outputFileName : "*.xml",
-            disableArchiveOutput : false,
-            passThreshold : 100,
-            unstableThreshold: 95.0,
-            otherFiles : "*/selenium-screenshot.png,*/report-.csv",
-          ])
-               if(passThreshold==100 || unstableThreshold==95.0){
-                  println "gerrit +1"
-               }
+               println "Try"
+            sleep(10)
+            currentBuild.result="SUCCESS"
+  
        }
-       echo "R ${currentBuild.result} C ${currentBuild.currentResult}"
+     
     } catch (e) {
+       println "catch"
+       currentBuild.result="FAILED"
        throw(e)
     } finally {
+      println "Finally"
+      echo "${currentBuild.currentResult}"
     }
-}
-           
-   echo "During Failure: ${currentBuild.currentResult}"
+}           
 }
