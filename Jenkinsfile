@@ -22,7 +22,7 @@ node {
      
     } catch (e) {
        println "catch"
-       currentBuild.result="FAILED"
+       currentBuild.result="SUCCESS"
        throw(e)
     } finally {
       println "Finally"
