@@ -25,11 +25,12 @@ node {
      
     } catch (e) {
        println "catch"
-       echo "${currentBuild.currentResult}"
+       
        throw(e)
     } finally {
       println "Finally"
-      echo "${currentBuild.currentResult}"
+     
     }
-}           
+}  
+   echo "${currentBuild.currentResult}"
 }
