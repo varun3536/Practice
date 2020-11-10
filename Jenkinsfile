@@ -24,7 +24,7 @@ node {
             unstableThreshold: 95.0,
             otherFiles : "*/selenium-screenshot.png,*/report-.csv",
           ])
-               if(passThreshold=100 || unstableThreshold=95.0){
+               if(passThreshold==100 || unstableThreshold==95.0){
                   println "gerrit +1"
                }
        }
