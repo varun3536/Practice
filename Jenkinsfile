@@ -12,18 +12,28 @@ node {
     }
         
      stage('Test') {
-        try{
-           step[(
-              t=echo "Pass"
-              )]
-           if(t=="Pass"){
-              echo "${currentBuild.currentResult}"
-           }
-    } catch (err) {
-        
-        echo "Failed: ${err}"
-        echo "Failed Error": ${currentBuild.currentResult}"
-        throw err
+            try {
+            stage('Test myapp') {
+            echo "R ${currentBuild.result} C ${currentBuild.currentResult}"
+            step([
+            $class : 'RobotPublisher',
+            outputPath : 'myapp/output/',
+            outputFileName : "*.xml",
+            disableArchiveOutput : false,
+            passThreshold : 100,
+            unstableThreshold: 95.0,
+            otherFiles : "*/selenium-screenshot.png,*/report-.csv",
+          ])
+               if(passThreshold=100 || unstableThreshold=95.0){
+                  println "gerrit +1"
+               }
+       }
+       echo "R ${currentBuild.result} C ${currentBuild.currentResult}"
+    } catch (e) {
+       throw(e)
+    } finally {
+    }
+}
        
     }
     }      
