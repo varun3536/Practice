@@ -15,7 +15,7 @@ node {
             stage('Test myapp') {
                println "Try"
             sleep()
-            exit 1
+            print
             currentBuild.result="SUCCESS"
   
        }
