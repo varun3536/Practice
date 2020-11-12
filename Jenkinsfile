@@ -30,7 +30,7 @@ node {
     } finally {
                
       println "Finally"
-          sh "ls -la"
+          sh "pwd"
          def out=sh (script:"/bin/bash -c find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g' | awk -F= '\$1=='fail'{print \$2}'", returnStdout: true)
          
          println "${out}"
