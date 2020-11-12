@@ -20,7 +20,7 @@ node {
              def threshold = 100
               if(threshold==100){
          
-             sh "exit 1"
+             
                }
        }
      
