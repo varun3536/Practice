@@ -41,11 +41,11 @@ node {
         sh "pwd"
         // sh (script: "/bin/bash -c find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'")
         
-         def a1=sh "cat output.xml | grep 'fail=\"0\"' | grep Test Bvt", returnStatus:true
+         def a1=sh (script: "cat output.xml | grep 'fail=\"0\"' | grep 'Test Bvt'", returnStatus:true)
          
          
          //sh  script: """find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'|awk -F= '\$1==\"fail\"{print \$2}'| xargs >result1"""
-         def a2=sh script:"cat output.xml | grep 'fail=\"1\"' | grep Test Bvt", returnStatus:true
+         def a2=sh (script:"cat output.xml | grep 'fail=\"1\"' | grep 'Test Bvt'", returnStatus:true)
             println "this is a1 $a1"
             println "this is a2 $a2"
          if (a1 == 0 && a2 == 0){
