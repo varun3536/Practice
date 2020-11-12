@@ -19,14 +19,14 @@ node {
              
              def threshold = 100
               if(threshold==100){
-         
+              sh script: "exit 1"
              
                }
        }
      
     } catch (e) {
        println "catch"
-       
+       sh script "echo e.getMessage()"
        throw(e)
     } finally {
                
