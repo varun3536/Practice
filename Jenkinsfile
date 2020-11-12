@@ -41,7 +41,7 @@ node {
                 echo "${POM_VERSION}"
             
                } 
-         sh "echo "${POM_VERSION}"      
+         println "${POM_VERSION}"      
          if ("${POM_VERSION}"=="0"){
                   println "Pass"
                }
