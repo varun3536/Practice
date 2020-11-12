@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 
 def buildUUID = UUID.randomUUID().toString()
+
 println "${buildUUID}"
 
 node {
@@ -41,7 +42,7 @@ node {
         sh "pwd"
         // sh (script: "/bin/bash -c find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'")
         
-         def a1=sh (script: "cat output.xml | grep 'fail=\"0\"' | grep 'Test Bvt'", returnStatus:true)
+         def a1=sh (script: "cat /var/lib/jenkins/workspace/*/output.xml | grep 'fail=\"0\"' | grep 'Test Bvt'", returnStatus:true)
          
          
          //sh  script: """find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'|awk -F= '\$1==\"fail\"{print \$2}'| xargs >result1"""
