@@ -39,7 +39,11 @@ node {
                 echo "${ver_script}"
                 POM_VERSION = sh(script: "${ver_script}", returnStdout: true)
                 echo "${POM_VERSION}"
+            
                } 
+               if ("${POM_VERSION}"=="0"){
+                  println "Pass"
+               }
          
          if("${currentBuild.currentResult}"=="FAILED") {
          echo "last build success"
