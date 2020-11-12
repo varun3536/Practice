@@ -36,7 +36,7 @@ node {
         // sh (script: "/bin/bash -c find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'")
         
                sh (returnStdout: true, script: """find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'|awk -F= '\$1==\"fail\"{print \$2}'| sed 's/\"//g' >result""")
-               def ver=readFile('result').trim() 
+               def ver=readFile('result')
                echo "${ver}"
                 //POM_VERSION = sh(script: "${ver_script}", returnStdout: true)
                 //echo "Test: ${POM_VERSION}"
