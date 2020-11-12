@@ -26,12 +26,13 @@ node {
      
     } catch (e) {
        println "catch"
-       sh script "echo e.getMessage()"
+       
+       sh "rm -rf ${buildUUID}" 
        throw(e)
     } finally {
                
       println "Finally"
-       sh "rm -rf ${buildUUID}"     
+          
          }
           
         stage ('continue') {     
