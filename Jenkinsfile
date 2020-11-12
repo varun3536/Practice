@@ -15,7 +15,7 @@ node {
             echo "${currentBuild.currentResult}"
             stage('Test myapp') {
              println "Try"
-              sleep(2)
+             
              def threshold = 100
               if(threshold==100){
          
@@ -30,6 +30,10 @@ node {
     } finally {
                
       println "Finally"
+         def out=sh (script:"/bin/bash -c find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g' | awk -F= '\$1=='fail'{print \$2}'", returnStdout: true)
+         
+         println "${out}"
+         
          if("${currentBuild.currentResult}"=="FAILED") {
          echo "last build success"
          println "+1 on gerrit"
