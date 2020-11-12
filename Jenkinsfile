@@ -31,7 +31,7 @@ node {
     } finally {
                
       println "Finally"
-       sh "rm -rf ${buildUUID}     
+       sh "rm -rf ${buildUUID}"     
          }
           
         println "Continue after finally"
