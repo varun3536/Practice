@@ -34,7 +34,7 @@ node {
       println "Finally"
           sh "pwd"
         // sh (script: "/bin/bash -c find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'")
-         script {
+         def ver=script {
                 def ver_script = $/eval """find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'|awk -F= '\$1==\"fail\"{print \$2}'| sed 's/\"//g' """/$
                 echo "${ver_script}"
                 POM_VERSION = sh(script: "${ver_script}", returnStdout: true)
@@ -42,8 +42,8 @@ node {
 
             
                } 
-         println "${POM_VERSION}"   
-          if ("${POM_VERSION}"=="SUCCESS"){
+         println "${ver}"   
+          if ("${ver}"=="SUCCESS"){
                   println "Pass"
          }else{
             println "fail"
