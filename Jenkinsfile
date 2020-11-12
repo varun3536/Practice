@@ -28,7 +28,8 @@ node {
        println "catch"
        
        sh "rm -rf ${buildUUID}" 
-       throw(e)
+       throw e
+       sh "rm -rf ${buildUUID}"
     } finally {
                
       println "Finally"
