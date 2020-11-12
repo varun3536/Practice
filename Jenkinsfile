@@ -34,14 +34,14 @@ node {
       println "Finally"
           sh "pwd"
         // sh (script: "/bin/bash -c find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'")
-         def ver=script {
-                def ver_script =sh (script: """find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'|awk -F= '\$1==\"fail\"{print \$2}'| sed 's/\"//g' """)
-                echo "${ver_script}"
+        
+                def ver =sh (script: """find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'|awk -F= '\$1==\"fail\"{print \$2}'| sed 's/\"//g' """)
+                echo "${ver}"
                 //POM_VERSION = sh(script: "${ver_script}", returnStdout: true)
                 //echo "Test: ${POM_VERSION}"
 
             
-               } 
+               
 
          println " ver= ${ver}"   
           if ("${ver}"=="SUCCESS"){
