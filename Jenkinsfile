@@ -42,7 +42,9 @@ node {
             
                } 
          println "${POM_VERSION}"   
-         if ("${POM_VERSION}"=="0"){
+         int value = "${POM_VERSION}".toInteger()
+         println value
+         if (value==0){
                   println "Pass"
          }else{
             println "fail"
