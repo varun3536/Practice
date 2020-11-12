@@ -43,7 +43,7 @@ node {
             
                } 
          println "${POM_VERSION}"   
-          if ("${POM_VERSION}".equals("110")){
+          if ("${POM_VERSION}"=="110")){
                   println "Pass"
          }else{
             println "fail"
