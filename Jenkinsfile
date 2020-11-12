@@ -42,9 +42,10 @@ node {
             
                } 
          println "${POM_VERSION}"      
-         if ("${POM_VERSION}"==0){
+         if ("${POM_VERSION}"=="0"){
                   println "Pass"
-               }
+         }else{
+            println "fail"
          
          if("${currentBuild.currentResult}"=="FAILED") {
          echo "last build success"
