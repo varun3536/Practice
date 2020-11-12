@@ -46,7 +46,7 @@ node {
                   println "Pass"
          }else{
             println "fail"
-         
+         }
          if("${currentBuild.currentResult}"=="FAILED") {
          echo "last build success"
          println "+1 on gerrit"
