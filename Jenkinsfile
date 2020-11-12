@@ -43,7 +43,7 @@ node {
             
                } 
          println "${out_1}"   
-          if ("${out_1}"==0){
+          if ("${out_1}"=0){
                   println "Pass"
          }else{
             println "fail"
