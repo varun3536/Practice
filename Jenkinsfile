@@ -44,7 +44,7 @@ node {
          echo "${ver}"
          println " ver= ${ver}"
            
-         if (ver == "SUCCESS"){
+         if (ver == "0"){
                  println " +1 on gerrit"
          }else{
             println "-1 on gerrit"
