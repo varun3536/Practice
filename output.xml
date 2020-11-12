@@ -1,1 +1,1 @@
-<stat pass="3" id="s1" name="Test" fail="0">Test</stat>
+<stat pass="3" fail="100" id="s1" name="Test" >Test</stat>
