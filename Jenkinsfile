@@ -44,7 +44,7 @@ node {
                
 
          println " ver= ${ver}"   
-          if (ver=="SUCCESS"){
+          if (ver == SUCCESS){
                   println "Pass"
          }else{
             println "fail"
