@@ -42,11 +42,13 @@ node {
         // sh (script: "/bin/bash -c find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'")
         
          sh (returnStdout: true, script: """find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'|awk -F= '\$1==\"fail\"{print \$2}'| xargs >result""")
-         def ver=readFile('result').trim()  
-         if (ver == "0"){
-                 println " +1 on gerrit"
+         def a1=readFile('result').trim()
+         sh (returnStdout: true, script: """find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'|awk -F= '\$1==\"fail\"{print \$2}'| xargs >result1""")
+         def a2=readFile('result').trim()
+         if (a1 == "0" || a2 == "0){
+                println " ********+1 on gerrit*******"
          }else{
-            println "-1 on gerrit"
+            println "******-1 on gerrit*******"
           }     
      } 
    }
