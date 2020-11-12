@@ -5,7 +5,9 @@ println "{$buildUUID}"
 
 node {
    stage('Build'){
-    
+        checkout scm
+         
+      
         // do something that doesn't fail
         echo "Im not going to fail"
     }
