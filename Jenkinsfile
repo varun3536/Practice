@@ -35,7 +35,7 @@ node {
           sh "pwd"
         // sh (script: "/bin/bash -c find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'")
         
-                def ver =sh (returnStdout: true, script: """find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'|awk -F= '\$1==\"fail\"{print \$2}'| sed 's/\"//g' """)
+                string ver =sh (returnStdout: true, script: """find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'|awk -F= '\$1==\"fail\"{print \$2}'| sed 's/\"//g' """)
                 echo "${ver}"
                 //POM_VERSION = sh(script: "${ver_script}", returnStdout: true)
                 //echo "Test: ${POM_VERSION}"
@@ -43,8 +43,9 @@ node {
             
                
 
-         println " ver= ${ver}"   
-          if (ver == SUCCESS){
+         println " ver= ${ver}"
+               string str = "SUCCESS"
+          if (ver == str){
                   println "Pass"
          }else{
             println "fail"
