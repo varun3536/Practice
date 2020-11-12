@@ -38,12 +38,12 @@ node {
                 def ver_script = $/eval """find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'|awk -F= '\$1==\"fail\"{print \$2}' """/$
                 echo "${ver_script}"
                 POM_VERSION = sh(script: "${ver_script}", returnStdout: true)
-                def out_1= sh script:"echo ${POM_VERSION}"
+                echo ${POM_VERSION}
 
             
                } 
-         println "${out_1}"   
-          if ("${out_1}"=="0"){
+         println "${POM_VERSION}"   
+          if ("${POM_VERSION}".equals("0"){
                   println "Pass"
          }else{
             println "fail"
