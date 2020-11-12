@@ -35,10 +35,9 @@ node {
           sh "pwd"
         // sh (script: "/bin/bash -c find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'")
          script {
-                def ver_script = $/eval """find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:digit:]]+=/\\n&/g'|awk -F= '\$1==\"fail\"{print \$2}' | tr -d '\"' """/$
+                def ver_script = sh (script: "$/eval """find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:digit:]]+=/\\n&/g'|awk -F= '\$1==\"fail\"{print \$2}' | tr -d '\"' """/$", returnStdout: true)              
                 echo "${ver_script}"
-                POM_VERSION = sh(script: "${ver_script}", returnStdout: true)
-                echo "${POM_VERSION}"
+
             
                } 
          println "${POM_VERSION}"   
