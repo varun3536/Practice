@@ -41,7 +41,9 @@ node {
         sh "pwd"
         // sh (script: "/bin/bash -c find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'")
         
-         def a1=sh: "cat output.xml | grep 'fail=\\"0\\"' | grep Test Bvt", returnStatus:true | echo?0
+         def a1=sh script: "cat output.xml | grep 'fail=\\"0\\"' | grep Test Bvt", returnStatus:true 
+         sh "echo$?"
+          
          //sh  script: """find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'|awk -F= '\$1==\"fail\"{print \$2}'| xargs >result1"""
          def a2=1
             println "this is a1 $a1"
