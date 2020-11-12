@@ -41,7 +41,7 @@ node {
                 echo "${POM_VERSION}"
             
                } 
-         println "${POM_VERSION}"      
+         println "${POM_VERSION}".replaceAll("^\"|\"$", "")    
          if ("${POM_VERSION}".equals("0")){
                   println "Pass"
          }else{
