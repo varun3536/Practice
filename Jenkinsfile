@@ -34,7 +34,7 @@ node {
        sh "rm -rf ${buildUUID}"     
          }
           
-        stage (continue) {     
+        stage ('continue') {     
         println "Continue after finally"
         sh "pwd"
         // sh (script: "/bin/bash -c find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'")
