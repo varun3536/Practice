@@ -33,9 +33,8 @@ node {
                
       println "Finally"
           sh "pwd"
-         def out=sh script:"/bin/bash -c find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g' | awk -F= '\$1=='fail'{print \$2}'"
+         sh "/bin/bash -c find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g' | awk -F= '\$1=='fail'{print \$2}'"
          
-         println "${out}"
          
          if("${currentBuild.currentResult}"=="FAILED") {
          echo "last build success"
