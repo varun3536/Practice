@@ -8,6 +8,7 @@ node {
    stage('Build'){
         checkout scm
          sh script: "mkdir ${buildUUID} && cd ${buildUUID}"
+         sh script: "ssh -i "mykey.pem" ec2-user@ec2-3-89-26-76.compute-1.amazonaws.com | cat ls -la"
          sh "ls -la"
         // do something that doesn't fail
        
