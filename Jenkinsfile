@@ -8,7 +8,7 @@ node {
    stage('Build'){
         checkout scm
          sh script: "mkdir ${buildUUID} && cd ${buildUUID}"
-         sh script: "ssh -tt -o StrictHostKeyChecking=no -i /var/lib/jenkins/workspace/mykey ec2-user@ec2-3-89-26-76.compute-1.amazonaws.com /bin/bash ./hello.sh "
+         sh script: "/bin/bash ./hello.sh"
          //sh "chmod +x ./hello.sh"
          //sh script: "./hello.sh"
         
