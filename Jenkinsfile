@@ -8,7 +8,7 @@ node {
    stage('Build'){
         checkout scm
          sh script: "mkdir ${buildUUID} && cd ${buildUUID}"
-         sh script: "/var/lib/jenkins/workspace/Practice_main/hello.sh 2>&1 | tee output.log"
+         sh script: "/var/lib/jenkins/workspace/Practice_main/hello.sh 2>&1 | tee output.log | chmod 777 output.log"
         
          sh "ls -la"
         // do something that doesn't fail
@@ -48,7 +48,7 @@ node {
          
          //sh  script: """find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'|awk -F= '\$1==\"fail\"{print \$2}'| xargs >result1"""
          def a2=sh (script:"cat output.xml | grep 'fail=\"0\"' | grep 'Test Bvt'", returnStatus:true)
-            println "this is a1 $a0"
+            println "this is a1 $a1"
             println "this is a2 $a2"
          if (a1 == 0 && a2 == 0){
                 println " ********+1 on gerrit*******"
