@@ -8,7 +8,7 @@ node {
    stage('Build'){
         checkout scm
          sh script: "mkdir ${buildUUID} && cd ${buildUUID}"
-         sh script: "/var/lib/jenkins/workspace/Practice_main/hello.sh 2>&1 | tee output.log | chmod 777 output.log"
+         sh script: "/var/lib/jenkins/workspace/Practice_main/hello.sh 2>&1 |  sudo tee output.log"
         
          sh "ls -la"
         // do something that doesn't fail
