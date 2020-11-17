@@ -8,7 +8,7 @@ node {
    stage('Build'){
         checkout scm
          sh script: "mkdir ${buildUUID} && cd ${buildUUID}"
-         sh script: "/var/lib/jenkins/workspace/Practice_main/hello.sh"
+         sh script: "./hello.sh"
         
          sh "ls -la"
         // do something that doesn't fail
