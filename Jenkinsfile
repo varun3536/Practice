@@ -8,7 +8,7 @@ node {
    stage('Build'){
         checkout scm
          sh script: "mkdir ${buildUUID} && cd ${buildUUID}"
-         sh "pwd"
+         sh script: "hello.sh 2>&1 | tee log.txt"
         
          sh "ls -la"
         // do something that doesn't fail
