@@ -8,7 +8,8 @@ node {
    stage('Build'){
         checkout scm
          sh script: "mkdir ${buildUUID} && cd ${buildUUID}"
-         sh script: "ssh-agent -tt -i 'mykey.pem' ec2-user@3.89.26.76 "
+         sh "pwd"
+        
          sh "ls -la"
         // do something that doesn't fail
        
