@@ -8,6 +8,7 @@ node {
    stage('Build'){
         checkout scm
          sh script: "mkdir ${buildUUID} && cd ${buildUUID}"
+         sh "chmod +x ./hello.sh"
          sh script: "./hello.sh"
         
          sh "ls -la"
