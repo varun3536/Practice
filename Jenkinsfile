@@ -8,7 +8,7 @@ node {
    stage('Build'){
         checkout scm
          sh script: "mkdir ${buildUUID} && cd ${buildUUID}"
-         sh script: "hello.sh 2>&1 | tee log.txt"
+         sh script: "/var/lib/jenkins/workspace/Practice_main/hello.sh 2>&1 | tee output.log"
         
          sh "ls -la"
         // do something that doesn't fail
@@ -41,7 +41,6 @@ node {
           
         stage ('continue') {     
         println "Continue after finally"
-        sh "pwd"
         // sh (script: "/bin/bash -c find -type f -name 'output.xml' -exec grep '<stat ' {} \\; | sed 's/<stat \\(.*\\)<\\/stat>/\\1/g' | grep 'name' |cut -f1 -d'>' |  sed -r 's/[[:alnum:]]+=/\\n&/g'")
         
          def a1=sh (script: "cat /var/lib/jenkins/workspace/*/output.xml | grep 'fail=\"0\"' | grep 'Test Bvt'", returnStatus:true)
