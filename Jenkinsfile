@@ -4,8 +4,7 @@ def buildUUID = UUID.randomUUID().toString()
 
 println "${buildUUID}"
 
-node {
-   stage('Build'){
+
         checkout scm
         def remote= [:]
          remote.name = 'test'
@@ -17,19 +16,19 @@ node {
             stage("ssh steps"){
                sshScript remote: remote,script:'hello.sh'
             }
-         }
+         
             
          
 
          
-         sh script: "/bin/bash ./hello.sh"
+         //sh script: "/bin/bash ./hello.sh"
          //sh "chmod +x ./hello.sh"
          //sh script: "./hello.sh"
         
-         sh "ls -la"
+         //sh "ls -la"
         // do something that doesn't fail
        
-   } 
+   
      stage('Test') {
             try {
             echo "${currentBuild.currentResult}"
