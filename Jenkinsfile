@@ -8,10 +8,10 @@ node {
    stage('Build'){
         checkout scm
         sh "ls -la"
-         sh script: "./hello.sh"
-        //  sh script: "set +x && ./hello.sh 2>&1 | tee some_log.log > /dev/null"
-        //  sh "chmod +rwx ./hello.sh"
-        //  sh (script: "stdbuf -oL ./hello.sh &> some_log.log", returnStdout: true)
+         //sh script: "./hello.sh"
+        //sh script: "set +x && ./hello.sh 2>&1 | tee some_log.log > /dev/null"
+        sh "chmod +rwx ./hello.sh"
+        sh (script: "./hello.sh, returnStdout: true)
         sh "whoami"
 
          
