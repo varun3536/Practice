@@ -8,7 +8,7 @@ node {
    stage('Build'){
         checkout scm
         sh "ls -la"
-         sh script: "ssh -tt -n N -i /var/lib/jenkins/workspace/mykey ec2-user@ec2-3-89-26-76.compute-1.amazonaws.com /bin/bash ./hello.sh 1>&2"
+         sh script: "./hello.sh"
         //  sh script: "set +x && ./hello.sh 2>&1 | tee some_log.log > /dev/null"
         //  sh "chmod +rwx ./hello.sh"
         //  sh (script: "stdbuf -oL ./hello.sh &> some_log.log", returnStdout: true)
