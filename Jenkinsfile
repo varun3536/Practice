@@ -11,7 +11,7 @@ node {
          //sh script: "./hello.sh"
         //sh script: "set +x && ./hello.sh 2>&1 | tee some_log.log > /dev/null"
         sh "chmod +rwx ./hello.sh"
-        sh script: "/bin/bash ./hello.sh"
+        sshScript('hello.sh')
         sh "whoami"
 
          
