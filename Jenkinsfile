@@ -11,7 +11,7 @@ node {
          //sh script: "./hello.sh"
         //sh script: "set +x && ./hello.sh 2>&1 | tee some_log.log > /dev/null"
         sh "chmod +rwx ./hello.sh"
-        sh "./hello.sh"
+        sh (returnstdout: true, script:'./hello.sh').trim()
         sh "whoami"
 
          
