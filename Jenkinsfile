@@ -17,7 +17,7 @@ node {
       def responseCode = sh (returnStatus: true, script: "./hello.sh &> tmp.txt")
       def output =  readFile(file: "tmp.txt")
 
-    if (responseCode != 0){
+    if (responseCode != 1){
       println "[ERROR] ${output}"
       throw new Exception("${output}")
     }else{
