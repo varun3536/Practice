@@ -13,16 +13,7 @@ node {
         sh "chmod +rwx ./hello.sh"
         sh (returnStdout: true, script:"./hello.sh")
         sh "whoami"
-    
-      def responseCode = sh (returnStatus: true, script: "./hello.sh &> tmp.txt")
-      def output =  readFile(file: "tmp.txt")
-
-    if (responseCode != 1){
-      println "[ERROR] ${output}"
-      throw new Exception("${output}")
-    }else{
-      return "${output}"
-    }
+   
 
 
          
