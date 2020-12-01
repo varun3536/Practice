@@ -7,7 +7,7 @@ println "${buildUUID}"
 node {
    stage('Build'){
         checkout scm
-        which docker
+         sh ' which docker'
         sh "ls -la"
          //sh script: "./hello.sh"
         //sh script: "set +x && ./hello.sh 2>&1 | tee some_log.log > /dev/null"
