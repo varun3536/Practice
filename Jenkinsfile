@@ -1,5 +1,14 @@
 #!/usr/bin/env groovy
 
+proprties([
+    parameters([
+        separator(name:"BUILD OPTION", sectionHeader: "Options"),
+        choice(choices: ['a','b','c'],
+                description: 'specify',
+                name: 'test')
+    ])
+])
+
 def buildUUID = UUID.randomUUID().toString()
 
 println "${buildUUID}"
