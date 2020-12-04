@@ -6,12 +6,12 @@ properties([
         choice(choices: ['a','b','c'],
                 description: 'specify',
                 name: 'test'),
-        separator(name:"BUILD OPTION", sectionHeader: "Options"),
+        separator(name:" OPTION", sectionHeader: "Options"),
         choice(
-        def xml="http://old-releases.ubuntu.com/releases/".toURL().text
+        def xml="https://repository.jboss.org/".toURL().text
         def root= new XmlParser().parseText(xml)
                retun root.data.artifact.collect{
-                   "${it.nameId.text()}"
+                   it.version.text()"
                })
 
     ])
