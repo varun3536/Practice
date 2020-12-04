@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-proprties([
+properties([
     parameters([
         separator(name:"BUILD OPTION", sectionHeader: "Options"),
         choice(choices: ['a','b','c'],
