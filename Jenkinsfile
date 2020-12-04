@@ -5,8 +5,10 @@ properties([
         separator(name:"BUILD OPTION", sectionHeader: "Options"),
         choice(choices: ['a','b','c'],
                 description: 'specify',
-                name: 'test',
-         def xml="http://old-releases.ubuntu.com/releases/".toURL().text
+                name: 'test'),
+        separator(name:"BUILD OPTION", sectionHeader: "Options"),
+        choice(
+        def xml="http://old-releases.ubuntu.com/releases/".toURL().text
         def root= new XmlParser().parseText(xml)
                retun root.data.artifact.collect{
                    "${it.nameId.text()}"
