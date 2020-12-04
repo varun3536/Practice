@@ -3,9 +3,11 @@
 properties([
     parameters([
         separator(name:"BUILD OPTION", sectionHeader: "Options"),
-        choice(choices: ['a','b','c'],
-                description: 'specify',
-                name: 'test')
+        def xml="https://repository.jboss.org/".toURL().text
+        def root= new XmlParser().parseText(xml)
+        retun root.data.artifact.collect{
+            it.version.text()
+}
 
 
                
@@ -13,11 +15,7 @@ properties([
     ])
 ])
 
-def xml="https://repository.jboss.org/".toURL().text
-def root= new XmlParser().parseText(xml)
-retun root.data.artifact.collect{
-     it.version.text()
-}
+
 def buildUUID = UUID.randomUUID().toString()
 
 println "${buildUUID}"
