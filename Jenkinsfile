@@ -6,13 +6,12 @@ properties([
         choice(choices: ['a','b','c'],
                 description: 'specify',
                 name: 'test'),
-        separator(name:" OPTION", sectionHeader: "Options"),
-        choice(
+
         def xml="https://repository.jboss.org/".toURL().text
         def root= new XmlParser().parseText(xml)
         retun root.data.artifact.collect{
                    it.version.text()
-               })
+               }
 
     ])
 ])
