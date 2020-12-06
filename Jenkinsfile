@@ -2,15 +2,17 @@
 
 properties([
     parameters([
+        def xml = "https://repository.jboss.org/nexus/service/local/lucene/search?g=jboss&a=jboss-j2ee&r=releases&p=jar".toURL().text
+
+        def root = new XmlParser().parseText(xml)
+
+       return root.data.artifact.collect {
+                  it.version.text()
+}
         separator(name:"BUILD OPTION", sectionHeader: "Options"),
     ])
 ])
-def xml="https://repository.jboss.org/".toURL().text
-def root= new XmlParser().parseText(xml)
-println "${root}"
-        retun root.data.artifact.collect{
-            it.version.text()
- }
+
 def buildUUID = UUID.randomUUID().toString()
 
 println "${buildUUID}"
@@ -18,6 +20,13 @@ println "${buildUUID}"
 node {
    stage('Build'){
         checkout scm
+       def xml = "https://repository.jboss.org/nexus/service/local/lucene/search?g=jboss&a=jboss-j2ee&r=releases&p=jar".toURL().text
+
+         def root = new XmlParser().parseText(xml)
+
+          return root.data.artifact.collect {
+                     it.version.text()
+}
          sh ' which docker'
         sh "ls -la"
          //sh script: "./hello.sh"
