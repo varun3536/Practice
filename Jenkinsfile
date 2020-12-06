@@ -4,9 +4,7 @@ properties([
     parameters([
         separator(name:"BUILD OPTION", sectionHeader: "Options"),
         def xml = "https://repository.jboss.org/nexus/service/local/lucene/search?g=jboss&a=jboss-j2ee&r=releases&p=jar".toURL().text
-
         def root = new XmlParser().parseText(xml)
-
         return root.data.artifact.collect {
                 "${it.groupId.text()}:${it.artifactId.text()}:${it.version.text()}"
 }
