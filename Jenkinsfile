@@ -1,14 +1,14 @@
 #!/usr/bin/env groovy
+
+properties([
+    parameters([
+        separator(name:"BUILD OPTION", sectionHeader: "Options"),
+
 def xml="https://repository.jboss.org/".toURL().text
 def root= new XmlParser().parseText(xml)
 retun root.data.artifact.collect{
             it.version.text()
 }
-properties([
-    parameters([
-        separator(name:"BUILD OPTION", sectionHeader: "Options"),
-
-
 
                
 
