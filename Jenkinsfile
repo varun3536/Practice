@@ -1,27 +1,30 @@
 #!/usr/bin/env groovy
 import groovy.json.JsonSlurper
-try {
-    List<String> artifacts = new ArrayList<String>()
-            
-    def artifactsObjectRaw = ["curl https://repository.jboss.org/nexus/service/local/lucene/search?g=jboss&a=jboss-j2ee&r=releases&p=jar"].execute().text
-    def jsonSlurper = new JsonSlurper()
-    def artifactsJsonObject = jsonSlurper.parseText(artifactsObjectRaw)
-    def dataArray = artifactsJsonObject.data
-    for(item in dataArray){
-        if (item.isMetadata== false)
-        artifacts.add(item.text)
-    } 
-    return artifacts
-} catch (Exception e) {
-    print "There was a problem fetching the artifacts"
-}
-
-properties([
+properties ([
     parameters([
-        separator(name:"BUILD OPTION", sectionHeader: "Options"),
-
+        choice(choices: ['PROD', 'DEV', 'QA'], description: '', name: 'ParamEnv' ),   
+        string(name: 'ParamVersion', defaultValue: '', description: 'Version to deploy'),
+        extendedChoice(
+            name: 'someName',
+            description: '',
+            visibleItemCount: 50,
+            multiSelectDelimiter: ',',
+            type: 'PT_SINGLE_SELECT',
+            groovyScript: '''
+            import groovy.json.JsonSlurper
+                List<String> nexusPkgV = new ArrayList<String>()        
+                def pkgObject = ["curl", "http://old-releases.ubuntu.com/releases/4.10/"].execute().text
+                def jsonSlurper = new JsonSlurper()
+                def artifactsJsonObject = jsonSlurper.parseText(pkgObject)
+                def dataA = artifactsJsonObject.items
+                for (i in dataA) {
+                    nexusPkgV.add(i.version)
+                }
+            return nexusPkgV
+            '''
+        )
     ])
-])
+]) 
 
 def buildUUID = UUID.randomUUID().toString()
 
