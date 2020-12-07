@@ -8,8 +8,10 @@ properties ([
             name: 'Image',
             description: '',
             visibleItemCount: 50,
+            multiSelectDelimiter: ',',
+            type: 'PT_SINGLE_SELECT',
             groovyScript: '''
-          
+            
             def get = new URL("https://chromedriver.storage.googleapis.com").openConnection();
             def getRC = get.getResponseCode();
              if (getRC.equals(200)) {
