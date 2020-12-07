@@ -13,7 +13,7 @@ properties ([
             groovyScript: '''
             import groovy.json.JsonSlurper
 
-                def dataA = (01)
+                def dataA = 01
                 for (i in dataA) {
                     nexusPkgV.add(i.version)
                 }
