@@ -5,7 +5,10 @@ properties ([
         choice(choices: ['PROD', 'DEV', 'QA'], description: '', name: 'ParamEnv' ),   
         string(name: 'ParamVersion', defaultValue: '', description: 'Version to deploy'),
         extendedChoice(
-      
+            name: 'Image',
+            description: '',
+            visibleItemCount: 50,
+            groovyScript: '''
             try {
             def get = new URL("https://chromedriver.storage.googleapis.com").openConnection();
             def getRC = get.getResponseCode();
