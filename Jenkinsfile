@@ -29,9 +29,9 @@ properties ([
 ]) 
 buildID="${params.DEPLOY_BUILD_ID}"
 println "${buildID}"
-if(params.DEPLOY_BUILD_ID == null){
+if("$buildID" == null){
     error ("set param")
-    exit 1
+    sh "exit 1"
 }
 def buildUUID = UUID.randomUUID().toString()
 
