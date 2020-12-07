@@ -13,7 +13,7 @@ properties ([
             groovyScript: '''
             import groovy.json.JsonSlurper
                 List<String> nexusPkgV = new ArrayList<String>()        
-                def pkgObject = ["curl", "https://chromedriver.storage.googleapis.com/index.html?path=87.0.4280.88"].execute().text
+                def pkgObject = ["curl", "https://chromedriver.storage.googleapis.com/index.html"].execute().text
                 def jsonSlurper = new JsonSlurper()
                 def artifactsJsonObject = jsonSlurper.parseText(pkgObject)
                 def dataA = artifactsJsonObject.items
