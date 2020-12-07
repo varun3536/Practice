@@ -2,7 +2,7 @@
 import groovy.json.JsonSlurper
 properties ([
     parameters([
-        string(name: 'DEPLOY_BUILD_ID', defaultValue: ' ', description: 'Build-Id to Deploy',),
+        string(name: 'deploy', defaultValue: , description: 'Build-Id to Deploy',),
         choice(choices: ['PROD', 'DEV', 'QA'], description: '', name: 'ParamEnv' ),   
         string(name: 'ParamVersion', defaultValue: '', description: 'Version to deploy'),
         extendedChoice(
@@ -27,17 +27,19 @@ properties ([
             )
     ])
 ]) 
-buildID="${params.DEPLOY_BUILD_ID}"
+buildID="${params.deploy}"
 println "${buildID} None"
 
 def buildUUID = UUID.randomUUID().toString()
 
-println "${buildUUID}"
+println "${buildUUID}
+    
 
-    if(params.DEPLOY_BUILD_ID == null){
+if(params.deploy == null){
     error ("set param")
     sh "exit 1"
 }
+
 
 node {
    stage('Build'){
