@@ -1,9 +1,21 @@
 #!/usr/bin/env groovy
-        def xml = "https://repository.jboss.org/nexus/service/local/lucene/search?g=jboss&a=jboss-j2ee&r=releases&p=jar".toURL().text
-        def root = new XmlParser().parseText(xml)
-        return root.data.artifact.collect {
-                "${it.groupId.text()}:${it.artifactId.text()}:${it.version.text()}"
+import groovy.json.JsonSlurper
+try {
+    List<String> artifacts = new ArrayList<String>()
+    def artifactsUrl = https://repository.jboss.org/nexus/service/local/"          
+    def artifactsObjectRaw = ["curl", "-s", "-H", "accept: application/json", "-k", "--url", "${artifactsUrl}"].execute().text
+    def jsonSlurper = new JsonSlurper()
+    def artifactsJsonObject = jsonSlurper.parseText(artifactsObjectRaw)
+    def dataArray = artifactsJsonObject.data
+    for(item in dataArray){
+        if (item.isMetadata== false)
+        artifacts.add(item.text)
+    } 
+    return artifacts
+} catch (Exception e) {
+    print "There was a problem fetching the artifacts"
 }
+
 properties([
     parameters([
         separator(name:"BUILD OPTION", sectionHeader: "Options"),
