@@ -9,7 +9,7 @@ properties ([
             description: '',
             visibleItemCount: 50,
             groovyScript: '''
-            try {
+          
             def get = new URL("https://chromedriver.storage.googleapis.com").openConnection();
             def getRC = get.getResponseCode();
              if (getRC.equals(200)) {
@@ -22,9 +22,6 @@ properties ([
        return image_tag_list.sort()
        '''
             )
-            }catch(Exception e){
-    println(e)
-}
     ])
 ]) 
 
