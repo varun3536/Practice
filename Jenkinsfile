@@ -39,8 +39,8 @@ node {
         sh "ls -la"
          //sh script: "./hello.sh"
         //sh script: "set +x && ./hello.sh 2>&1 | tee some_log.log > /dev/null"
-        sh "chmod +rwx ./hello.sh"
-        sh (returnStdout: true, script:"./hello.sh")
+       
+       
         sh "whoami"
    
 
