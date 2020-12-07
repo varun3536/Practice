@@ -12,10 +12,7 @@ properties ([
             type: 'PT_SINGLE_SELECT',
             groovyScript: '''
             import groovy.json.JsonSlurper
-                List<String> nexusPkgV = new ArrayList<String>()        
-                def pkgObject = ["curl", "https://chromedriver.storage.googleapis.com/index.html"].execute().text
-                def jsonSlurper = new JsonSlurper()
-                def artifactsJsonObject = jsonSlurper.parseText(pkgObject)
+
                 def dataA = (01,02,03)
                 for (i in dataA) {
                     nexusPkgV.add(i.version)
