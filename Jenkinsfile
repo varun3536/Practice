@@ -8,13 +8,13 @@ properties ([
             name: 'Image',
             description: '',
             visibleItemCount: 50,
-            multiSelectDelimiter: ',',
+            
             type: 'PT_SINGLE_SELECT',
             groovyScript: '''
-            
             def get = new URL("https://chromedriver.storage.googleapis.com").openConnection();
             def getRC = get.getResponseCode();
              if (getRC.equals(200)) {
+                println "success"
                 def nexus_response = [:]
                 nexus_response = new JsonSlurper().parseText(get.getInputStream().getText())
                 def image_tag_list = []
