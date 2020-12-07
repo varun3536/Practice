@@ -27,9 +27,9 @@ properties ([
             )
     ])
 ]) 
-buildID=${params.DEPLOY_BUILD_ID}
+buildID="${params.DEPLOY_BUILD_ID}"
 if(params.DEPLOY_BUILD_ID.equals(null){
-    println " Erorr"
+    println " ${buildID}"
 }
 def buildUUID = UUID.randomUUID().toString()
 
