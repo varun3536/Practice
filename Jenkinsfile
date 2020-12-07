@@ -27,7 +27,8 @@ properties ([
             )
     ])
 ]) 
-buildID=${params.DEPLOY_BUILD_ID}
+buildID="${params.DEPLOY_BUILD_ID}"
+println "${buildID}"
 if(params.DEPLOY_BUILD_ID == null){
     println "Error"
 }
