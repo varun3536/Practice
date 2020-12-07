@@ -21,7 +21,7 @@ properties ([
                 for (tag in nexus_response.items.version){
                    image_tag_list.add(tag)
         }
-       return image_tag_list.sort()
+       return 2
        '''
             )
     ])
