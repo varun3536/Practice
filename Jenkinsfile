@@ -28,8 +28,8 @@ properties ([
     ])
 ]) 
 buildID="${params.DEPLOY_BUILD_ID}"
-println "${buildID}"
-if("$buildID" == null){
+println "${buildID} None"
+if("$buildID" == ''){
     error ("set param")
     sh "exit 1"
 }
