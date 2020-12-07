@@ -5,7 +5,7 @@ properties ([
         choice(choices: ['PROD', 'DEV', 'QA'], description: '', name: 'ParamEnv' ),   
         string(name: 'ParamVersion', defaultValue: '', description: 'Version to deploy'),
         extendedChoice(
-        import groovy.json.JsonSlurper
+      
             try {
             def get = new URL("https://chromedriver.storage.googleapis.com").openConnection();
             def getRC = get.getResponseCode();
@@ -21,7 +21,7 @@ properties ([
 }catch(Exception e){
     println(e)
 }
-
+)
     ])
 ]) 
 
