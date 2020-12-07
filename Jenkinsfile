@@ -2,8 +2,8 @@
 import groovy.json.JsonSlurper
 try {
     List<String> artifacts = new ArrayList<String>()
-    def artifactsUrl = "https://repository.jboss.org/nexus/service/local/"          
-    def artifactsObjectRaw = ["curl", "-s", "-H", "accept: application/json", "-k", "--url", "${artifactsUrl}"].execute().text
+            
+    def artifactsObjectRaw = ["curl https://repository.jboss.org/nexus/service/local/lucene/search?g=jboss&a=jboss-j2ee&r=releases&p=jar"].execute().text
     def jsonSlurper = new JsonSlurper()
     def artifactsJsonObject = jsonSlurper.parseText(artifactsObjectRaw)
     def dataArray = artifactsJsonObject.data
