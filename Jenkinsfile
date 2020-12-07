@@ -2,7 +2,7 @@
 import groovy.json.JsonSlurper
 properties ([
     parameters([
-        string(name: 'DEPLOY_BUILD_ID', defaultValue: ' ', description: 'Build-Id to Deploy',)
+        string(name: 'DEPLOY_BUILD_ID', defaultValue: ' ', description: 'Build-Id to Deploy',),
         choice(choices: ['PROD', 'DEV', 'QA'], description: '', name: 'ParamEnv' ),   
         string(name: 'ParamVersion', defaultValue: '', description: 'Version to deploy'),
         extendedChoice(
