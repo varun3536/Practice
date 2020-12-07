@@ -21,8 +21,7 @@ properties ([
 }catch(Exception e){
     println(e)
 }
-            '''
-        )
+
     ])
 ]) 
 
