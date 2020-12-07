@@ -21,10 +21,10 @@ properties ([
         }
        return image_tag_list.sort()
        '''
+            )
             }catch(Exception e){
     println(e)
 }
-)
     ])
 ]) 
 
