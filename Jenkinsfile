@@ -19,7 +19,7 @@ node {
    stage('Build'){
         checkout scm
 
-}
+
          sh ' which docker'
         sh "ls -la"
          //sh script: "./hello.sh"
