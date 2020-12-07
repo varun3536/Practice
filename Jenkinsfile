@@ -16,7 +16,7 @@ properties ([
                 def pkgObject = ["curl", "https://chromedriver.storage.googleapis.com/index.html"].execute().text
                 def jsonSlurper = new JsonSlurper()
                 def artifactsJsonObject = jsonSlurper.parseText(pkgObject)
-                def dataA = artifactsJsonObject.items
+                def dataA = (01,02,03)
                 for (i in dataA) {
                     nexusPkgV.add(i.version)
                 }
