@@ -20,8 +20,8 @@ properties ([
                    image_tag_list.add(tag)
         }
        return image_tag_list.sort()
-    }
-}catch(Exception e){
+       '''
+            }catch(Exception e){
     println(e)
 }
 )
