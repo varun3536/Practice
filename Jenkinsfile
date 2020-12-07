@@ -29,13 +29,15 @@ properties ([
 ]) 
 buildID="${params.DEPLOY_BUILD_ID}"
 println "${buildID} None"
-if("$buildID" == ''){
-    error ("set param")
-    sh "exit 1"
-}
+
 def buildUUID = UUID.randomUUID().toString()
 
 println "${buildUUID}"
+
+    if(params.DEPLOY_BUILD_ID == null){
+    error ("set param")
+    sh "exit 1"
+}
 
 node {
    stage('Build'){
