@@ -11,7 +11,7 @@ properties ([
             
             type: 'PT_SINGLE_SELECT',
             groovyScript: '''
-            def get = new URL("https://chromedriver.storage.googleapis.com").openConnection();
+            def get = new URL("https://updates.jenkins-ci.org/download/plugins/").openConnection();
             def getRC = get.getResponseCode();
              if (getRC.equals(200)) {
                 println "success"
